@@ -13,3 +13,9 @@ Start by running `npm install` inside the project folder
 `npm run eslint` to run eslint
 `npm run build` to make a production build
 `npm run start-prod` to run your production build
+
+## Errors
+
+- For the error: `error:0308010C:digital envelope routines::unsupported`
+- Run the command:
+  - `export NODE_OPTIONS=--openssl-legacy-provider`
