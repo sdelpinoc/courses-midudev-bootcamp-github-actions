@@ -12,3 +12,6 @@ jobs:
       - name: Echo the message
         run: |
           echo "Hello Sergio!"
+      - name: Tell me the dated
+        run: date
+      - run: ls -l
