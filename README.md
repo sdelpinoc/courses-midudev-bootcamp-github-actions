@@ -1,3 +1,5 @@
+[![Deployment Pipeline](https://github.com/sdelpinoc/courses-midudev-bootcamp-github-actions/actions/workflows/pipeline.yml/badge.svg)](https://github.com/sdelpinoc/courses-midudev-bootcamp-github-actions/actions/workflows/pipeline.yml)
+
 # Full Stack open CI/CD
 
 This repository is used for the CI/CD module of the Full stack open course
