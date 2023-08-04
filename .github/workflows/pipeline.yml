@@ -15,8 +15,10 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: '18'
+        # run: npm install --no-audit --no-fund --no-optional
+        # ci: continuos integration, execute npm install in a more optimize way
       - name: Install dependencies
-        run: npm install --no-audit --no-fund --no-optional
+        run: npm ci
       - name: Lint
         run: npm run eslint
       - name: Build
