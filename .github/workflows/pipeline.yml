@@ -23,9 +23,8 @@ jobs:
         run: npm run build
       - name: Test
         run: npm test
-      - name: npm test
-        run: E2E tests
-      - uses: cypress-io/github-action@v5
+      - name: E2E tests
+        uses: cypress-io/github-action@v5
         with:
           command: npm run test:e2e
           start: npm run start-test
