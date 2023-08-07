@@ -3,6 +3,7 @@
   "github": {
     "enabled": false
   },
+  "buildCommand": "npm start",
   "builds": [
     {
       "src": "./dist",
