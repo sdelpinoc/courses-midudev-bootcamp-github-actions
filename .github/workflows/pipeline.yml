@@ -42,7 +42,7 @@ jobs:
           vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}  #Required
           vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }} #Required 
           vercel-args: '--prod'
-          # working-directory: ./
+          working-directory: ./
       
       # - name: Deploy-Production
       #   uses: actions/checkout@v2
