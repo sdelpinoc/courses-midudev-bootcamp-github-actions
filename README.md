@@ -19,8 +19,11 @@ Start by running `npm install` inside the project folder
 ## Errors
 
 - For the error: `error:0308010C:digital envelope routines::unsupported`
-- Run the command:
-  - `export NODE_OPTIONS=--openssl-legacy-provider`
-
-- This is a problem when you need to push the code, so you need to run:
-  - `export NODE_OPTIONS=""` or `unset NODE_OPTIONS`, before the push
+- Add to scripts: "NODE_OPTIONS=--openssl-legacy-provider"
+~~~
+  "scripts": {
+    "start": "NODE_OPTIONS=--openssl-legacy-provider webpack-dev-server --open --mode development",
+    "start-prod": "NODE_OPTIONS=--openssl-legacy-provider node app.js",
+    "build": "NODE_OPTIONS=--openssl-legacy-provider webpack --mode production",
+  },
+~~~

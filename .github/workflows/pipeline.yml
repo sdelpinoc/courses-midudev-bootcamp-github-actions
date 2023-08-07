@@ -31,3 +31,12 @@ jobs:
           command: npm run test:e2e
           start: npm run start-test
           wait-on: http://localhost:5000
+      - uses: amondnet/vercel-action@v20 #deploy
+        with:
+          vercel-token: XdzmEvbRyMMzBe2X9xzYmkFF # Required
+          # github-token: ${{ secrets.GITHUB_TOKEN }} #Optional 
+          # vercel-args: '--prod' #Optional
+          vercel-org-id: cw6kXKyKRAvVeqaCBzwinx4H  #Required
+          vercel-project-id: prj_OOQfkvMgxeEI7gSfMFZfrEOt2KOP #Required 
+          working-directory: ./
+      

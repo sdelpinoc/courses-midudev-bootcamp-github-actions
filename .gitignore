@@ -4,3 +4,4 @@ cypress/screenshots
 # cypress/support
 cypress/videos
 cypress/fixtures
+.vercel
