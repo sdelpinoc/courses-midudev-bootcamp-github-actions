@@ -4,9 +4,9 @@
   "description": "Full Stack Open",
   "main": "src/index.js",
   "scripts": {
-    "start": "NODE_OPTIONS=--openssl-legacy-provider webpack-dev-server --open --mode development",
+    "dev": "NODE_OPTIONS=--openssl-legacy-provider webpack-dev-server --open --mode development",
     "start-test": "NODE_ENV=test node app.js",
-    "start-prod": "NODE_OPTIONS=--openssl-legacy-provider node app.js",
+    "start": "NODE_OPTIONS=--openssl-legacy-provider node app.js",
     "test": "jest",
     "eslint": "eslint './**/*.{js,jsx}'",
     "build": "NODE_OPTIONS=--openssl-legacy-provider webpack --mode production",
