@@ -14,7 +14,7 @@ jobs:
           fetch-depth: 0
       - uses: actions/setup-node@v3
         with:
-          node-version: '18'
+          node-version: "18"
         # run: npm install --no-audit --no-fund --no-optional
         # ci: continuos integration, execute npm install in a more optimize way
       - name: Install dependencies
@@ -37,13 +37,12 @@ jobs:
         uses: amondnet/vercel-action@v20 #deploy
         with:
           vercel-token: ${{ secrets.VERCEL_TOKEN }} # Required
-          # github-token: ${{ secrets.GITHUB_TOKEN }} #Optional 
+          # github-token: ${{ secrets.GITHUB_TOKEN }} #Optional
           # vercel-args: '--prod' #Optional
-          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}  #Required
-          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }} #Required 
-          vercel-args: '--prod'
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }} #Required
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }} #Required
           working-directory: ./
-      
+
       # - name: Deploy-Production
       #   uses: actions/checkout@v2
       # - name: Install Vercel CLI

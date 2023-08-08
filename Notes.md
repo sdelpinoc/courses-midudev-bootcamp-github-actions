@@ -18,6 +18,15 @@
       "src": "./dist/**",
       "use": "@vercel/static"
     }
+  ],
+  ~~~
+  - Set the routes, to redirect to the dist(distribution) folder
+  ~~~
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "dist/$1"
+    }
   ]
   ~~~
 
