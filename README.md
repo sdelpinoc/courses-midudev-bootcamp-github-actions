@@ -22,8 +22,8 @@ Start by running `npm install` inside the project folder
 - Add to scripts: "NODE_OPTIONS=--openssl-legacy-provider"
 ~~~
   "scripts": {
-    "start": "NODE_OPTIONS=--openssl-legacy-provider webpack-dev-server --open --mode development",
-    "start-prod": "NODE_OPTIONS=--openssl-legacy-provider node app.js",
+    "dev": "NODE_OPTIONS=--openssl-legacy-provider webpack-dev-server --open --mode development",
+    "start": "NODE_OPTIONS=--openssl-legacy-provider node app.js",
     "build": "NODE_OPTIONS=--openssl-legacy-provider webpack --mode production",
   },
 ~~~

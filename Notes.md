@@ -53,7 +53,7 @@
   New repository secret.
   - In the .yml file, we call this variables with: ${{ secrets.NAME_OF_THE_SECRET }}
 
-  - AlIAS_DOMAINS:
+  - AlIAS_DOMAINS(Not working):
   You can also use any of the following variables anywhere in the domain:
     {USER} - the owner of the repository the action was executed in
     {REPO} - the name of the repository the action was executed in
@@ -63,5 +63,8 @@
 
     ~~~
       alias-domains: | #Optional
-        https://{{BRANCH}}courses-midudev-bootcamp-github-actions.vercel.app
+        https://{{BRANCH}}.courses-midudev-bootcamp-github-actions.vercel.app
     ~~~
+
+    - To list aliases in Vercel:
+      - `vercel alias list`
