@@ -15,7 +15,7 @@
   ~~~
   "builds": [
     {
-      "src": "/dist",
+      "src": "./dist/**",
       "use": "@vercel/static"
     }
   ]
