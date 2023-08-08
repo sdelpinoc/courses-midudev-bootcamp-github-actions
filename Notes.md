@@ -55,7 +55,7 @@
   New repository secret.
   - In the .yml file, we call this variables with: ${{ secrets.NAME_OF_THE_SECRET }}
 
-  - AlIAS_DOMAINS(Not working):
+  - AlIAS_DOMAINS(Not working for the moment):
   You can also use any of the following variables anywhere in the domain:
     {USER} - the owner of the repository the action was executed in
     {REPO} - the name of the repository the action was executed in
@@ -70,3 +70,21 @@
 
     - To list aliases in Vercel:
       - `vercel alias list`
+
+  - Protect to main branch:
+    - Go to the repository -> Settings -> Branches -> click in Branch protection rules
+    - In Branch name pattern, put: main
+    - Check: 
+      - Require status checks to pass before merging
+      - Require branches to be up to date before merging
+
+  - Cancel Previous Redundant Builds
+    - We use the action [Cancel Workflow Action](https://github.com/marketplace/actions/cancel-workflow-action)
+    - We put the step at the beginning:
+      ~~~
+      steps:
+        - name: Cancel Previous Redundant Builds
+          uses: styfle/cancel-workflow-action@0.9.1
+          with:
+            access_token: ${{ github.token }}
+      ~~~
