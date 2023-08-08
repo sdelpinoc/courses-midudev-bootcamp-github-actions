@@ -52,3 +52,16 @@
   - The variables in the settings options of the GitHub repository, then go to secrets and variables and then click in
   New repository secret.
   - In the .yml file, we call this variables with: ${{ secrets.NAME_OF_THE_SECRET }}
+
+  - AlIAS_DOMAINS:
+  You can also use any of the following variables anywhere in the domain:
+    {USER} - the owner of the repository the action was executed in
+    {REPO} - the name of the repository the action was executed in
+    {BRANCH} - the branch in which the action was triggered
+    {SHA} - the most recent commit's sha
+    {PR} - the number of the pr the action was triggered from
+
+    ~~~
+      alias-domains: | #Optional
+        https://{{BRANCH}}.courses-midudev-bootcamp-github-actions.vercel.app
+    ~~~
