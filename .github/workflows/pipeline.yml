@@ -8,7 +8,15 @@ on:
     types: [opened, synchronize]
 
 jobs:
-  deploy:
+  avoid_redundancy:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Cancel Previous Redundant Builds
+        uses: styfle/cancel-workflow-action@0.9.1
+        with:
+          access_token: ${{ github.token }}
+
+  lint:
     runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v3
@@ -17,25 +25,82 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: "18"
-        # run: npm install --no-audit --no-fund --no-optional
-        # ci: continuos integration, execute npm install in a more optimize way
       - name: Install dependencies
         run: npm ci
       - name: Lint
         run: npm run eslint
+
+  build:
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v3
+        with:
+          node-version: "18"
+      - name: Install dependencies
+        run: npm ci
       - name: Build
         run: npm run build
+      - uses: actions/upload-artifact@v2
+        with:
+          name: dist
+          path: dist # The directory of the files that we wanna use later
+
+  tests:
+    needs: [lint, build]
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v3
+        with:
+          node-version: "18"
+      - name: Install dependencies
+        run: npm ci
+      - uses: actions/download-artifact@v2 # Download the dist folder upload in the build job
+        with:
+          name: dist
+          path: dist
       - name: Test
         run: npm test
+
+  e2e:
+    needs: [lint, build]
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v3
+        with:
+          node-version: "18"
+      - name: Install dependencies
+        run: npm ci
+      - uses: actions/download-artifact@v2 # Download the dist folder upload in the build job
+        with:
+          name: dist
+          path: dist
       - name: E2E tests
         uses: cypress-io/github-action@v5
         with:
           command: npm run test:e2e
           start: npm run start-test
           wait-on: http://localhost:5000
-      - name: List the directory
-        run: ls -l
+
+  deploy:
+    needs: [tests, e2e]
+    runs-on: ubuntu-22.04
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+      # - name: List the directory
+      #   run: ls -l
       - name: Deploy to Vercel
+        if: ${{ github.event_name == 'push' }}
         uses: amondnet/vercel-action@v20 #deploy
         with:
           vercel-token: ${{ secrets.VERCEL_TOKEN }} # Required
