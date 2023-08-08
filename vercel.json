@@ -5,7 +5,7 @@
   },
   "builds": [
     {
-      "src": "./dist/**",
+      "src": "./**",
       "use": "@now/static"
     }
   ]
