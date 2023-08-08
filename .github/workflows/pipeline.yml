@@ -43,7 +43,7 @@ jobs:
           vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }} #Required
           working-directory: ./
           alias-domains: | #Optional
-            https://{{BRANCH}}.courses-midudev-bootcamp-github-actions.vercel.app
+            https://{{BRANCH}}-courses-midudev-bootcamp-github-actions.vercel.app
 
       # - name: Deploy-Production
       #   uses: actions/checkout@v2

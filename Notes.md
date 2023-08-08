@@ -63,5 +63,5 @@
 
     ~~~
       alias-domains: | #Optional
-        https://{{BRANCH}}.courses-midudev-bootcamp-github-actions.vercel.app
+        https://{{BRANCH}}courses-midudev-bootcamp-github-actions.vercel.app
     ~~~
