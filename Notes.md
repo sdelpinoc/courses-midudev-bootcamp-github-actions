@@ -1,7 +1,9 @@
 # Github actions
 
 ## Upload to GitHub and Vercel
-- For the action, we use the (Vercel Action)[https://github.com/marketplace/actions/vercel-action]
+- For the action, we use the [Vercel Action](https://github.com/marketplace/actions/vercel-action)
+- For the [GitHub context](https://docs.github.com/en/actions/learn-github-actions/contexts#github-context)
+
 - Setup the vercel.json file:
   - When github.enabled set to false, Vercel for GitHub will not deploy the given project
   ~~~
