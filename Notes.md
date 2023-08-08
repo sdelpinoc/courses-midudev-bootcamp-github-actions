@@ -1,7 +1,7 @@
 # Github actions
 
 ## Upload to GitHub and Vercel
-
+- For the action, we use the (Vercel Action)[https://github.com/marketplace/actions/vercel-action]
 - Setup the vercel.json file:
   - When github.enabled set to false, Vercel for GitHub will not deploy the given project
   ~~~
@@ -33,6 +33,22 @@
   - Project Linking
   - You should link a project via Vercel CLI in locally, run:
     - `vercel`
-  - This will give you the vercel-org-id(org-id) and project(vercel-project-id)
 
-  
+  - This create a .vercel directory, and will give you the vercel-org-id(org-id) and project(vercel-project-id)
+
+  - Also we need to create a .github/workflows directory and inside crate a .yml file, for the deploy in Vercel, we add:
+  ~~~
+    - name: Deploy to Vercel
+    uses: amondnet/vercel-action@v20 #deploy
+    with:
+      vercel-token: ${{ secrets.VERCEL_TOKEN }} # Required
+      # github-token: ${{ secrets.GITHUB_TOKEN }} #Optional
+      # vercel-args: '--prod' #Optional
+      vercel-org-id: ${{ secrets.VERCEL_ORG_ID }} #Required
+      vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }} #Required
+      working-directory: ./
+  ~~~
+  - The VERCEL_TOKEN, we create in Dashboard -> Settings -> Tokens(https://vercel.com/account/tokens)
+  - The variables in the settings options of the GitHub repository, then go to secrets and variables and then click in
+  New repository secret.
+  - In the .yml file, we call this variables with: ${{ secrets.NAME_OF_THE_SECRET }}
